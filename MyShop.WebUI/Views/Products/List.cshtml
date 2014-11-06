@@ -1,0 +1,21 @@
+﻿@using MyShop.WebUI.Helpers
+@model MyShop.WebUI.Models.ProductsListViewModel
+
+@{
+    ViewBag.Title = "Products";
+}
+<p>Всего найдено товаров:  @Model.PageNavigation.TotalItems</p>
+<ul id="block-tovar-list">
+
+    @foreach (var p in Model.Products)
+    {
+        <li>
+            @{Html.RenderPartial("ProductShort", p);}
+        </li>
+    }
+</ul>
+
+<div class="pager">
+    @Html.PageLinks(Model.PageNavigation, x => Url.Action("List",
+        new { page = x, category = Model.CurrentCategory }))
+</div>

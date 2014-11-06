@@ -1,0 +1,24 @@
+﻿@model MyShop.Domain.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Параметры доставки</h2>
+Укажите параметры доставки товара.
+<div class="form-addr">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        <h3>Кому:</h3>
+        <div>Имя: @Html.EditorFor(x => x.Name)</div>
+        <h3>Куда:</h3>
+        <div>Страна: @Html.EditorFor(x => x.Country)</div>
+        <div>Город: @Html.EditorFor(x => x.City)</div>
+        <div>Адрес: @Html.EditorFor(x => x.Line1)</div>
+        <div>Почтовый индекс: @Html.EditorFor(x => x.Zip)</div>
+        <p align="center">
+            <input class="actionButtons" type="submit" value="Оформить заказ" />
+        </p>
+    }
+</div>

@@ -1,0 +1,21 @@
+﻿@model MyShop.Domain.Entities.Product
+
+@if (Model.ImagePath != null) {
+    <div style="float: left; margin-right: 20px">
+        <img src="@Url.Action("GetImage", "Products", new {Model.Id })" />
+    </div>
+  } 
+<p class="style-title-list">
+    <a href="/products/@Model.Id">@Model.Name</a>
+</p>
+<!--<a class="add-cart-style-list" href="item.html">Купить</a>-->
+@using (Html.BeginForm("AddToCart", "Cart"))
+{
+    @Html.HiddenFor(x => x.Id)
+    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+    <input class="add-cart-style-list" type="submit" value="+ Добавить в корзину" />
+}
+<p class="style-price-list">@Model.Price.ToString()</p>
+<div class="short-features">
+    <p>@Model.Description</p>
+</div>

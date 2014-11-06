@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+
+</head>
+<body>
+    <div id="block-body">
+        <div id="block-header">
+            <div id="menu">
+                <ul>
+                    <li>@Html.ActionLink("Главная", "List", "Products")</li>
+                    <li>@Html.ActionLink("Каталог", "List", "Products")</li>
+                    <li>@Html.ActionLink("Доставка и оплата", "List", "Products")</li>
+                    <li><a href="register.html">Регистрация</a></li>
+                    <li>@{Html.RenderAction("Summary", "Cart");}</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="block-right">
+            <div id="block-category">
+                <p class="header-title">Категории товаров</p>
+                @{ Html.RenderAction("Menu", "Navigation"); }
+                <!--
+                    <ul>
+                        <li>
+                            <a><img src="images/phone.png" id="phone-img" />Мобильные телефоны</a>
+                            <ul class="category-section">
+                                <li><a href="">Samsung</a></li>
+                                <li><a href="">Lenovo</a></li>
+                                <li><a href="">Sony</a></li>
+                                <li><a href="">Huawei</a></li>
+                                <li><a href=""><strong>Все модели</strong></a></li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a><img src="images/notebook.png" id="notebook-img" />Ноутбуки</a>
+                            <ul class="category-section">
+                                <li><a
+                                <li><a href="">Samsung</a></li>
+                                <li><a href="">Lenovo</a></li>
+                                <li><a href=""><strong>Все модели</strong></a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a><img src="images/monoblock.png" id="monoblock-img" />Моноблоки</a>
+                            <ul class="category-section">
+                                <li><a href="">Samsung</a></li>
+                                <li><a href="">Lenovo</a></li>
+                                <li><a href=""><strong>Все модели</strong></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    -->
+            </div>
+            <div id="block-parameters">
+                <p class="header-title">Поиск по параметрам</p>
+                <div class="params">
+                    <p class="title-filter">Стоимость</p>
+                    <form method="GET" action="">
+                        <div id="block-input-price">
+                            <ul>
+                                <li><p>от</p>
+                                <li>
+                                <li><input type="text" id="start-price" name="start_price" value="1000" />
+                                <li>
+                                <li><p>до</p>
+                                <li>
+                                <li><input type="text" id="end-price" name="end_price" value="10000" />
+                                <li>
+                                <li><p>руб</p>
+                                <li>
+                            </ul>
+                        </div>
+
+                        <p class="title-filter">Производители</p>
+                        <ul class="checkbox-brand">
+                            <li><input type="checkbox" id="checkbrand1" /><label for="checkbrand1">LG</label>
+                            <li>
+                            <li><input type="checkbox" id="checkbrand2" /><label for="checkbrand2">Sony</label>
+                            <li>
+                            <li><input type="checkbox" id="checkbrand3" /><label for="checkbrand3">Samsung</label>
+                            <li>
+                            <li><input type="checkbox" id="checkbrand4" /><label for="checkbrand4">Lenovo</label>
+                            <li>
+                        </ul>
+                        <center><input type="submit" name="submit" id="button-param-search" value="Найти" /></center>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="block-content">
+            @RenderBody()
+        </div>
+        <div id="block-footer">
+            Copyright &copy; 2014, Mikhail Savich
+        </div>
+    </div>
+</body>
+</html>
+

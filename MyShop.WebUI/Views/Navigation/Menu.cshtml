@@ -1,0 +1,53 @@
+﻿@using System.Web.Mvc.Ajax
+@model IEnumerable<string>
+
+<ul>
+    <li>
+        @*@Html.ActionLink("Все товары", "List", "Products")*@
+        @*@Ajax.ActionLink("Все товары", "List", "Products", 
+        new AjaxOptions()
+        {
+            UpdateTargetId = "block-tovar-list"
+        }
+        )*@
+        @Html.ActionLink("Все товары", "List", "Products")
+    </li>
+
+    @foreach (var link in Model)
+    {
+        <li>
+            @*@Ajax.RouteLink(link, new
+            {
+                controller = "Products",
+                action = "List",
+                category = link,
+                page = 1
+            },
+
+              new AjaxOptions()
+              {
+                  UpdateTargetId = "block-tovar-list",
+                  Confirm = "hello"
+              },
+             new
+            {
+                @class = link == ViewBag.SelectedCategory ? "selected" : null
+            })*@
+
+            @Html.RouteLink(link, new
+            {
+                controller = "Products",
+                action = "List",
+                category = link,
+                page = 1
+            },
+            new
+            {
+                @class = link == ViewBag.SelectedCategory ? "selected" : null
+            })
+        </li>
+    }
+
+</ul>
+
+

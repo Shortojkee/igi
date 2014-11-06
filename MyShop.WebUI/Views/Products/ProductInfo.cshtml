@@ -1,0 +1,54 @@
+﻿@model MyShop.Domain.Entities.Product
+
+@{
+    ViewBag.Title = @Model.Name;
+}
+
+<h2>
+    <a href="@Model.Id">@Model.Name</a>
+</h2>
+@using (Html.BeginForm("AddToCart", "Cart"))
+{
+    @Html.HiddenFor(x => x.Id)
+    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+    <input class="add-cart-style-list" type="submit" value="+ Добавить в корзину" />
+}
+<p class="style-price-list">@Model.Price.ToString()</p>
+<div class="short-features">
+    <p>@Model.Description</p>
+</div>
+
+<table width="90%" align="center">
+    <thead>
+        <tr>
+            <th align="right">Параметр</th>
+            <th align="left">Значение</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="right">Производитель</td>
+            <td align="left">@Model.BrandName</td>
+        </tr>
+        <tr>
+            <td align="right">Операционная система</td>
+            <td align="left">@Model.OS</td>
+        </tr>
+        <tr>
+            <td align="right">Разрешение экрана</td>
+            <td align="left">@Model.DisplayResolution</td>
+        </tr>
+        <tr>
+            <td align="right">Диагональ экрана</td>
+            <td align="left">@Model.ScreenSize</td>
+        </tr>
+        <tr>
+            <td align="right">Вес</td>
+            <td align="left">@Model.Weight</td>
+        </tr>
+        <tr>
+            <td align="right">Тип сенсора</td>
+            <td align="left">@Model.TouchScreenType</td>
+        </tr>
+    </tbody>
+</table>

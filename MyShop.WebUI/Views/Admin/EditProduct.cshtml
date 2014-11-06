@@ -1,0 +1,133 @@
+﻿@model MyShop.WebUI.Models.EditProductViewModel
+
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditProduct</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    
+    <fieldset>
+        <legend>Product</legend>
+
+        @Html.HiddenFor(model => model.Product.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Name)
+            @Html.ValidationMessageFor(model => model.Product.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Price)
+            @Html.ValidationMessageFor(model => model.Product.Price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Description)
+            @Html.ValidationMessageFor(model => model.Product.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.CategoryId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.SelectedCategory, Model.Categories)
+            @Html.ValidationMessageFor(model => model.SelectedCategory)
+        </div>
+
+        <div class="editor-label">Image</div>
+        <div class="editor-field">
+            @if (Model.Product.ImagePath == null)
+            {
+                @:None
+        }
+            else
+            {
+                <img src="@Url.Action("GetImage", "Products", new { Model.Product.Id })" />
+            }
+            <div>
+                Загрузить иображение:
+                <input type="file" name="fileUpload" />
+            </div>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.BrandName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.BrandName)
+            @Html.ValidationMessageFor(model => model.Product.BrandName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.OS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.OS)
+            @Html.ValidationMessageFor(model => model.Product.OS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.ScreenSize)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.ScreenSize)
+            @Html.ValidationMessageFor(model => model.Product.ScreenSize)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.DisplayResolution)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.DisplayResolution)
+            @Html.ValidationMessageFor(model => model.Product.DisplayResolution)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.DisplayRatio)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.DisplayRatio)
+            @Html.ValidationMessageFor(model => model.Product.DisplayRatio)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.TouchScreenType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.TouchScreenType)
+            @Html.ValidationMessageFor(model => model.Product.TouchScreenType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.Weight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Weight)
+            @Html.ValidationMessageFor(model => model.Product.Weight)
+        </div>
+
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>
+
