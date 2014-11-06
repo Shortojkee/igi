@@ -1,0 +1,8 @@
+﻿@model MyShop.WebUI.Models.ProductsListViewModel
+
+@foreach (var p in Model.Products)
+{
+    <li>
+        @{Html.RenderPartial("ProductShort", p);}
+    </li>
+}

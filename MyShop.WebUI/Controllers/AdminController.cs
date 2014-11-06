@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -16,14 +17,24 @@ namespace MyShop.WebUI.Controllers
     {
         private IProductRepository _repository;
         private ICategoryRepository _categoryRepository;
-        public AdminController(IProductRepository repository)
+        public AdminController(IProductRepository repository, ICategoryRepository categoryRepository)
         {
             _repository = repository;
+            _categoryRepository = categoryRepository;
         }
 
-        public ViewResult Index()
+        public PartialViewResult Products(string category)
         {
-            return View(_repository.Products);
+            IQueryable<Product> result = category == null ? _repository.Products : _repository.Products.Where(c => c.Category.Name == category);
+            return PartialView("_Products", result);
+        }
+
+        public ActionResult Index()
+        {
+            ProductsAdminViewModel model = new ProductsAdminViewModel();
+            model.Categories = _categoryRepository.Categories;
+            model.Products = _repository.Products;
+            return View(model);
         }
 
         //public ViewResult EditProduct(int id)

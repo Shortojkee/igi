@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MyShop.Domain.Entities.Product>
+
+<table class="Grid">
+    <tr>
+        <th>Id</th>
+        <th>Название</th>
+        <th>Категория</th>
+        <th>Цена</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.ActionLink(item.Name, "Edit", new { item.Id })</td>
+            <td>@Html.DisplayFor(modelItem => item.Category.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>
+                @using (Html.BeginForm("Delete", "Admin"))
+                {
+                    @Html.Hidden("Id", item.Id)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+    }
+
+</table>

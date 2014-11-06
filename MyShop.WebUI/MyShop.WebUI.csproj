@@ -151,6 +151,7 @@
     <Compile Include="Models\EditProductViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PageNavigation.cs" />
+    <Compile Include="Models\ProductsAdminViewModel.cs" />
     <Compile Include="Models\ProductsListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -255,6 +256,9 @@
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Admin\EditProduct.cshtml" />
+    <Content Include="Views\Products\_ProductsList.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Admin\_Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
