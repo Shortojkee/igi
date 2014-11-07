@@ -5,17 +5,11 @@
     ViewBag.Title = "Products";
 }
 <p>Всего найдено товаров:  @Model.PageNavigation.TotalItems</p>
-<ul id="block-tovar-list">
+<div id="productsList">
+    @{Html.RenderPartial("_ProductsList", Model);};
+</div>
 
-    @foreach (var p in Model.Products)
-    {
-        <li>
-            @{Html.RenderPartial("ProductShort", p);}
-        </li>
-    }
-</ul>
 
 <div class="pager">
-    @Html.PageLinks(Model.PageNavigation, x => Url.Action("List",
-        new { page = x, category = Model.CurrentCategory }))
+    @Ajax.PageLinks(Model.PageNavigation, Model.CurrentCategory)
 </div>

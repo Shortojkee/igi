@@ -9,16 +9,16 @@ TABLE.Grid TH.NumericCol, Table.Grid TD.NumericCol {
 FORM {margin-bottom: 0px; }
 DIV.Message { background: gray; color:White; padding: .2em; margin-top:.25em; }
 
-#product-categories ul{
-	list-style-type: none;
-}
-
-#product-categories ul li{
-	display: inline;
-
-}
 .field-validation-error { color: red; display: block; }
 .field-validation-valid { display: none; }
 .input-validation-error { border: 1px solid red; background-color: #ffeeee; }
 .validation-summary-errors { font-weight: bold; color: red; }
 .validation-summary-valid { display: none; }
+
+#productCategories ul{
+	list-style-type: none;
+}
+
+#productCategories li{
+	display: inline;
+}

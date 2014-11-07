@@ -57,7 +57,10 @@ namespace MyShop.WebUI.Controllers
                     ? _repository.Products.Count()
                     : _repository.Products.Where(e => e.Category.Name == category).Count()
             };
-
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ProductsList", viewModel);
+            }
             return View(viewModel);
         }
         public ActionResult ProductInfo(int id)

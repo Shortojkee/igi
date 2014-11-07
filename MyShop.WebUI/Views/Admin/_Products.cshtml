@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyShop.Domain.Entities.Product>
+﻿@model MyShop.WebUI.Models.ProductsAdminViewModel
 
 <table class="Grid">
     <tr>
@@ -9,7 +9,7 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Products)
     {
         <tr>
             <td>@Html.DisplayFor(modelItem => item.Id)</td>

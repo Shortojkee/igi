@@ -23,17 +23,29 @@ namespace MyShop.WebUI.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public PartialViewResult Products(string category)
-        {
-            IQueryable<Product> result = category == null ? _repository.Products : _repository.Products.Where(c => c.Category.Name == category);
-            return PartialView("_Products", result);
-        }
+        //public PartialViewResult Products(string category)
+        //{
+        //    IQueryable<Product> result = category == null ? _repository.Products : _repository.Products.Where(c => c.Category.Name == category);
+        //    return PartialView("_Products", result);
+        //}
 
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    ProductsAdminViewModel model = new ProductsAdminViewModel();
+        //    model.Categories = _categoryRepository.Categories;
+        //    model.Products = _repository.Products;
+        //    return View(model);
+        //}
+
+        public ActionResult Index(string category)
         {
             ProductsAdminViewModel model = new ProductsAdminViewModel();
             model.Categories = _categoryRepository.Categories;
-            model.Products = _repository.Products;
+            model.Products = category == null ? _repository.Products : _repository.Products.Where(c => c.Category.Name == category);
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Products", model);
+            }
             return View(model);
         }
 
