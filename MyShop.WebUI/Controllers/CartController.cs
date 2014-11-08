@@ -32,6 +32,28 @@ namespace MyShop.WebUI.Controllers
             return PartialView(cart);
         }
 
+        [HttpPost]
+        public ActionResult Checkout(ShoppingCart cart, ShippingDetails shippingDetails)
+        {
+            if (cart.Lines.Count() == 0)
+            {
+                ModelState.AddModelError("", "Sorry, your cart is empty!");
+            }
+            if (ModelState.IsValid)
+            {
+                //orderProcessor.ProcessOrder(cart, shippingDetails);
+                cart.Clear();
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView("Completed");
+                }
+                return View("Completed");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
+        }
         public ViewResult Checkout()
         {
 
