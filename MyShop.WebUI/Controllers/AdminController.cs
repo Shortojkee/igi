@@ -67,8 +67,7 @@ namespace MyShop.WebUI.Controllers
         //}
         public ViewResult Edit(int id)
         {
-            Product product = _repository.Products
-              .FirstOrDefault(p => p.Id == id);
+            Product product = _repository.Products != null ? _repository.Products.FirstOrDefault(p => p.Id == id) : null;
             return View(product);
         }
         //[HttpPost]
