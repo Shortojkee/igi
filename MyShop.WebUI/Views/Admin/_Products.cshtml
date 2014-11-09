@@ -2,7 +2,6 @@
 
 <table class="Grid">
     <tr>
-        <th>Id</th>
         <th>Название</th>
         <th>Категория</th>
         <th>Цена</th>
@@ -12,7 +11,6 @@
     @foreach (var item in Model.Products)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.Id)</td>
             <td>@Html.ActionLink(item.Name, "Edit", new { item.Id })</td>
             <td>@Html.DisplayFor(modelItem => item.Category.Name)</td>
             <td>@Html.DisplayFor(modelItem => item.Price)</td>

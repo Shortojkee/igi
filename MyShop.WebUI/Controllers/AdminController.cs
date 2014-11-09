@@ -12,11 +12,11 @@ using MyShop.WebUI.Models;
 
 namespace MyShop.WebUI.Controllers
 {
-     [Authorize]
+    [Authorize]
     public class AdminController : Controller
     {
-        private IProductRepository _repository;
-        private ICategoryRepository _categoryRepository;
+        private readonly IProductRepository _repository;
+        private readonly ICategoryRepository _categoryRepository;
         public AdminController(IProductRepository repository, ICategoryRepository categoryRepository)
         {
             _repository = repository;
